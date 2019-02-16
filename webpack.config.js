@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+//var VueLoaderPlugin = require('vue-loader/lib/plugin'); //引入vue-loader库
 module.exports = {
   entry: './src/index.ts',
   output: {
@@ -32,6 +33,10 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'vue-style-loader!css-loader'
       }
     ]
   },
@@ -41,6 +46,9 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
+  // plugins: [
+  //   new VueLoaderPlugin() //vue-loader插件加载方式
+  // ],
   devServer: {
     historyApiFallback: true,
     noInfo: true
